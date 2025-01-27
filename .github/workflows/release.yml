@@ -54,6 +54,7 @@ jobs:
               - label: "bug"
                 title: "🐛 Bug Fixes"
             include-closed: true
+            failOnError: true
 
 
       - name: Create GitHub Release
