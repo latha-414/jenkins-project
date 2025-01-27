@@ -37,6 +37,7 @@ jobs:
       - name: Get New Tag
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
 
+      
       - name: Generate Changelog
         id: changelog
         uses: mikepenz/release-changelog-builder-action@v3
@@ -46,13 +47,14 @@ jobs:
             template: |
               ## What's Changed
               $CHANGES
-            change-template: '- [#${{ NUMBER }}](${{ URL }}) ${{ TITLE }} (from `${{ SOURCE_BRANCH }}` by @$${{ AUTHOR }})'
+            change-template: '- [#${NUMBER}](${URL}) ${TITLE} (from `${SOURCE_BRANCH}` by @${AUTHOR})'
             categories:
               - label: "feature"
                 title: "✨ Features"
               - label: "bug"
                 title: "🐛 Bug Fixes"
             include-closed: true
+
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
