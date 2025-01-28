@@ -51,19 +51,7 @@ jobs:
           name: changelog
           path: ./CHANGELOG.md
 
-      - name: Download Changelog Artifact
-        id: download_changelog
-        uses: actions/download-artifact@v3
-        with:
-          name: changelog
-          path: ./changelog_artifact
-
-      - name: Read Changelog
-        id: read_changelog
-        run: |
-          changelog=$(cat ./CHANGELOG.md)
-          echo "CHANGELOG_BODY=${changelog}" >> $GITHUB_ENV
-
+    
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
@@ -71,6 +59,7 @@ jobs:
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "Release ${{ env.NEW_TAG }}"
-          body: "${{ env.CHANGELOG_BODY }}"
+          body: |
+            $(cat ./CHANGELOG.md)  # Directly include the changelog content
           draft: false
           prerelease: false
