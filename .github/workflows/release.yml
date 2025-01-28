@@ -44,6 +44,15 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
+     
+      - name: Check Changelog Content
+        run: |
+          if [ -f ./CHANGELOG.md ]; then
+            echo "Changelog generated successfully!"
+            cat ./CHANGELOG.md
+          else
+            echo "Changelog file not found!"
+          fi
 
       - name: Upload Changelog as Artifact
         uses: actions/upload-artifact@v3
@@ -51,7 +60,7 @@ jobs:
           name: changelog
           path: ./CHANGELOG.md
 
-    
+
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
