@@ -44,11 +44,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
-          onlyLastTag: "true"  # Only generate changelog for the latest tag
           stripHeaders: "true"  # Remove unnecessary headers
           stripGeneratorNotice: "true"  # Remove footer notice
-          since-tag: "v0.0.1-dev-branch.29"  # Start tag (replace with correct version)
-          due-tag: "v0.0.1-dev-branch.30"  # End tag (replace with correct version)
+          since-tag: "v0.0.1-dev-branch.30"  # Start tag (replace with correct version)
+          due-tag: "v0.0.1-dev-branch.31"  # End tag (replace with correct version)
           unreleased-only: "true"  # Only include unreleased changes
           no-unreleased: "true" 
          
