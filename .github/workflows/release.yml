@@ -47,6 +47,7 @@ jobs:
           onlyLastTag: "true"  # Only generate changelog for the latest tag
           stripHeaders: "true"  # Remove unnecessary headers
           stripGeneratorNotice: "true"  # Remove footer notice
+          unreleased-only: "true"
          
           
       - name: Commit and Push Changelog
