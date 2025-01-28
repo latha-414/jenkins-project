@@ -44,6 +44,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
+          options: '--unreleased'
 
       - name: Commit and Push Changelog
         run: |
