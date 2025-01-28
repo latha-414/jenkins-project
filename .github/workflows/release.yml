@@ -44,8 +44,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
-          options: '--unreleased-only'  # Only include unreleased changes
-          unreleased-label: "Unreleased:" 
+          options: '--since-tag v0.0.1-dev-branch.20 --due-tag v0.0.1-dev-branch.21'
+
           
       - name: Commit and Push Changelog
         run: |
