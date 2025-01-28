@@ -45,7 +45,18 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
 
-         
+      - name: Upload Changelog as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: changelog
+          path: ./CHANGELOG.md
+
+      - name: Read Changelog
+        id: read_changelog
+        run: |
+          changelog=$(cat ./CHANGELOG.md)
+          echo "CHANGELOG_BODY=${changelog}" >> $GITHUB_ENV
+
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
@@ -53,6 +64,6 @@ jobs:
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "Release ${{ env.NEW_TAG }}"
-          body: "${{ steps.changelog.outputs.changelog }}"
+          body: "${{ env.CHANGELOG_BODY }}"
           draft: false
           prerelease: false
