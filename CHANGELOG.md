@@ -2,7 +2,7 @@
 
 ## [Unreleased](https://github.com/latha-414/jenkins-project/tree/HEAD)
 
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.19...HEAD)
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.20...HEAD)
 
 **Fixed bugs:**
 
@@ -12,6 +12,10 @@
 
 - create pr for commit test [\#3](https://github.com/latha-414/jenkins-project/pull/3) ([latha-414](https://github.com/latha-414))
 - \[dev-branch\] - first pull request for testing the release file [\#1](https://github.com/latha-414/jenkins-project/pull/1) ([latha-414](https://github.com/latha-414))
+
+## [v0.0.1-dev-branch.20](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.20) (2025-01-28)
+
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.19...v0.0.1-dev-branch.20)
 
 ## [v0.0.1-dev-branch.19](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.19) (2025-01-28)
 
@@ -67,15 +71,15 @@
 
 ## [v0.0.1-dev-branch.6](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.6) (2025-01-28)
 
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.4...v0.0.1-dev-branch.6)
-
-## [v0.0.1-dev-branch.4](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.4) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.5...v0.0.1-dev-branch.4)
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.5...v0.0.1-dev-branch.6)
 
 ## [v0.0.1-dev-branch.5](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.5) (2025-01-28)
 
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.3...v0.0.1-dev-branch.5)
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.4...v0.0.1-dev-branch.5)
+
+## [v0.0.1-dev-branch.4](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.4) (2025-01-28)
+
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.3...v0.0.1-dev-branch.4)
 
 ## [v0.0.1-dev-branch.3](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.3) (2025-01-27)
 
