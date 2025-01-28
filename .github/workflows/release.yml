@@ -44,7 +44,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           sinceTag: "${{ env.NEW_TAG }}"
-          dueTag: "v0.0.1"  # Set the base or older tag to compare changes against
+          dueTag: "v0.0.1-dev-branch.6"  # Set the base or older tag to compare changes against
           output: './CHANGELOG.md'
 
       - name: Create GitHub Release
