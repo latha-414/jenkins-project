@@ -47,8 +47,7 @@ jobs:
           onlyLastTag: "true"  # Only generate changelog for the latest tag
           stripHeaders: "true"  # Remove unnecessary headers
           stripGeneratorNotice: "true"  # Remove footer notice
-          since-tag: v0.0.1-dev-branch.28
-          due-tag: v0.0.1-dev-branch.28
+         
           
       - name: Commit and Push Changelog
         run: |
