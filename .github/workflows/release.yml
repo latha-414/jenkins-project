@@ -1,4 +1,4 @@
-name: Tag and Release
+name: Tag and release
 
 on:
   workflow_dispatch:
@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          git-branch: QM-508
 
       - name: Tag and Release
         id: tag_release
@@ -37,25 +38,14 @@ jobs:
       - name: Get New Tag
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
 
-      
       - name: Generate Changelog
         id: changelog
-        uses: mikepenz/release-changelog-builder-action@v3
+        uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          configuration: |
-            template: |
-              ## What's Changed
-              $CHANGES
-            change-template: '- [#${NUMBER}](${URL}) ${TITLE} (from `${SOURCE_BRANCH}` by @${AUTHOR})'
-            categories:
-              - label: "feature"
-                title: "✨ Features"
-              - label: "bug"
-                title: "🐛 Bug Fixes"
-            include-closed: true
-            failOnError: true
-
+          sinceTag: "${{ env.NEW_TAG }}"
+          dueTag: "v0.0.1"  # Set the base or older tag to compare changes against
+          output: './CHANGELOG.md'
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
