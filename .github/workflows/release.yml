@@ -47,7 +47,10 @@ jobs:
           onlyLastTag: "true"  # Only generate changelog for the latest tag
           stripHeaders: "true"  # Remove unnecessary headers
           stripGeneratorNotice: "true"  # Remove footer notice
-          unreleased-only: "true"
+          since-tag: "v0.0.1-dev-branch.29"  # Start tag (replace with correct version)
+          due-tag: "v0.0.1-dev-branch.30"  # End tag (replace with correct version)
+          unreleased-only: "true"  # Only include unreleased changes
+          no-unreleased: "true" 
          
           
       - name: Commit and Push Changelog
