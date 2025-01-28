@@ -43,10 +43,7 @@ jobs:
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          sinceTag: "v0.0.1-dev-branch.8"
-          dueTag: "v0.0.1-dev-branch.7"  # Set the base or older tag to compare changes against
-          output: './CHANGELOG.md'
-
+         
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
