@@ -43,23 +43,26 @@ jobs:
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          output: './CHANGELOG.md'
-     
-      - name: Check Changelog Content
+          output: '.github/workflows/CHANGELOG.md'  # Specify the target path
+
+      - name: Verify Changelog Path
         run: |
-          if [ -f ./CHANGELOG.md ]; then
-            echo "Changelog generated successfully!"
-            cat ./CHANGELOG.md
-          else
-            echo "Changelog file not found!"
-          fi
+          echo "Current Directory: $(pwd)"
+          ls -alh .github/workflows  # Confirm changelog is generated in the right path
+
+      - name: Commit and Push Changelog
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .github/workflows/CHANGELOG.md  # Add changelog to commit
+          git commit -m "Update changelog for ${NEW_TAG}"
+          git push origin dev-branch  # Push back to the same branch
 
       - name: Upload Changelog as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: changelog
-          path: ./CHANGELOG.md
-
+          path: .github/workflows/CHANGELOG.md  # Upload the changelog as artifact
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
@@ -69,6 +72,6 @@ jobs:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "Release ${{ env.NEW_TAG }}"
           body: |
-            $(cat ./CHANGELOG.md)  # Directly include the changelog content
+            $(cat .github/workflows/CHANGELOG.md)  # Use the correct path to changelog
           draft: false
           prerelease: false
