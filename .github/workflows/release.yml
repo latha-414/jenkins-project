@@ -51,6 +51,13 @@ jobs:
           name: changelog
           path: ./CHANGELOG.md
 
+      - name: Download Changelog Artifact
+        id: download_changelog
+        uses: actions/download-artifact@v3
+        with:
+          name: changelog
+          path: ./changelog_artifact
+
       - name: Read Changelog
         id: read_changelog
         run: |
