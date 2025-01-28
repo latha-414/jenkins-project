@@ -2,7 +2,7 @@
 
 ## [Unreleased](https://github.com/latha-414/jenkins-project/tree/HEAD)
 
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.16...HEAD)
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.17...HEAD)
 
 **Fixed bugs:**
 
@@ -12,6 +12,10 @@
 
 - create pr for commit test [\#3](https://github.com/latha-414/jenkins-project/pull/3) ([latha-414](https://github.com/latha-414))
 - \[dev-branch\] - first pull request for testing the release file [\#1](https://github.com/latha-414/jenkins-project/pull/1) ([latha-414](https://github.com/latha-414))
+
+## [v0.0.1-dev-branch.17](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.17) (2025-01-28)
+
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.16...v0.0.1-dev-branch.17)
 
 ## [v0.0.1-dev-branch.16](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.16) (2025-01-28)
 
