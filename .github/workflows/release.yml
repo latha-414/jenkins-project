@@ -44,8 +44,10 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
-          since-tag: "v0.0.1-dev-branch.23"  # Previous tag
-          due-tag: "v0.0.1-dev-branch.24"
+          since-tag: "v0.0.1-dev-branch.24"  
+          due-tag: "v0.0.1-dev-branch.25"   
+          stripHeaders: "true"
+          stripGeneratorNotice: "true"
           
       - name: Commit and Push Changelog
         run: |
