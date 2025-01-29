@@ -44,7 +44,8 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
-          head_ref: ${{ env.NEW_TAG }} 
+          since_tag: ${{ steps.tag_release.outputs.previous_tag }}  # Only include changes since the previous tag
+          due_tag: ${{ env.NEW_TAG }}  
          
           
       - name: Commit and Push Changelog
