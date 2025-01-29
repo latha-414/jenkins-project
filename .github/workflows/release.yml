@@ -47,6 +47,7 @@ jobs:
           output: './CHANGELOG.md'
           onlyLastTag: true
           sinceTag: ${{ env.NEW_TAG }}
+          dueTag: v0.0.1-dev-branch.42
           
      
       - name: Create GitHub Release
