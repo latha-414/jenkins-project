@@ -44,9 +44,11 @@ jobs:
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          unreleased: false
-          future-release: v0.0.1-dev-branch.44
-          since-tag: v0.0.1-dev-branch.43
+          since-tag: "v0.0.1-dev-branch.42"  # Change to the specific tag
+          due-tag: "v0.0.1-dev-branch.43"  # Change to the specific tag
+          pull-requests: "true"  # Include only pull requests
+          unreleased: "false"   # Exclude unreleased changes
+          issues: "false"       
           output: './CHANGELOG.md'
          
           
