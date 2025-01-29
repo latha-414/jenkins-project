@@ -44,20 +44,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
-          since_tag: ${{ env.PREVIOUS_TAG }}  # Start from the previous tag
-          future_release: ${{ env.NEW_TAG }}
-         
+          since_tag: ${{ steps.tag_release.outputs.previous_tag }} 
           
-      - name: Commit and Push Changelog
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "github-actions@users.noreply.github.com"
-          git add CHANGELOG.md
-          git commit -m "Update changelog for ${{ env.NEW_TAG }}"
-          git push origin dev-branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+     
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
