@@ -32,6 +32,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          append_to_pre_release_tag: ""
           default_bump: ${{ github.event.inputs.release_type }}
           tag_prefix: v
 
@@ -45,7 +46,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
           onlyLastTag: true
-          sinceTag: v0.0.1-dev-branch.38
+          sinceTag: v0.0.1-dev-branch.40
           
      
       - name: Create GitHub Release
