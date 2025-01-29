@@ -44,7 +44,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
-          since_tag: ${{ steps.tag_release.outputs.previous_tag }} 
+          since_tag: "${{ env.NEW_TAG }}"
           
      
       - name: Create GitHub Release
