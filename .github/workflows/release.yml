@@ -46,7 +46,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
           onlyLastTag: true
-          sinceTag: v0.0.1-dev-branch.40
+          sinceTag: ${{ env.NEW_TAG }}
           
      
       - name: Create GitHub Release
