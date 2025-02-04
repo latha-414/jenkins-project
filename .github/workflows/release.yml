@@ -37,18 +37,21 @@ jobs:
 
       - name: Get New Tag
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
+    
+      - name: Get Latest Tag
+        id: get_tag
+        run: echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
 
       - name: Generate Changelog
-        id: changelog
         uses: mikepenz/release-changelog-builder-action@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fromTag: latest
+          fromTag: ${{ env.latest_tag }}
           toTag: HEAD
-          includePulls: true
           fetchReleaseInformation: true
           outputFile: ./CHANGELOG.md
-          
+          failOnError: false
+
       - name: Read Changelog File
         id: read_changelog
         run: |
