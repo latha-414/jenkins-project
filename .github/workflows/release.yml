@@ -24,7 +24,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          fetch-depth: 0  # Ensure full history is checked out
           git-branch: dev-branch
 
       - name: Tag and Release
@@ -32,6 +32,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          append_to_pre_release_tag: ""
           default_bump: ${{ github.event.inputs.release_type }}
           tag_prefix: v
 
@@ -42,11 +43,16 @@ jobs:
         id: changelog
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
-          token: ${{ secrets.TAG_AND_RELEASE }}
-          onlyLastTag: "true" 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          since-tag: "v0.0.1-dev-branch.51"  # Change to the specific tag
+          due-tag: "v0.0.1-dev-branch.52"  # Change to the specific tag
+          pull-requests: "true"  # Include only pull requests
+          unreleased: "false"   # Exclude unreleased changes
+          issues: "false"       
           output: './CHANGELOG.md'
-
          
+          
+     
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
