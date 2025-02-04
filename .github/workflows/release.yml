@@ -43,7 +43,7 @@ jobs:
         id: changelog
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           output: './CHANGELOG.md'
           onlyLastTag: true
           sinceTag: ${{ env.NEW_TAG }}
