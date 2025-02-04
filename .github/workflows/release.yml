@@ -42,8 +42,8 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          fromTag: "${{ env.NEW_TAG }}"
-          toTag: HEAD
+          fromTag: "v0.0.1-dev-branch.59"
+          toTag: "v0.0.1-dev-branch.60"
           fetchReleaseInformation: true
           fetchReviews: true
           fetchReviewers: true
