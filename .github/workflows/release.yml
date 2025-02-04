@@ -9,9 +9,9 @@ on:
         default: "patch"
         type: choice
         options:
-        - major
-        - minor
-        - patch
+          - major
+          - minor
+          - patch
 
 permissions:
   contents: write
@@ -24,8 +24,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensure full history is checked out
-          git-branch: dev-branch
+          fetch-depth: 0
+          ref: dev-branch  # Fix: Correct way to checkout a branch
 
       - name: Tag and Release
         id: tag_release
@@ -37,28 +37,28 @@ jobs:
 
       - name: Get New Tag
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
+    
+      - name: Get Latest Tag
+        id: get_tag
+        run: echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
 
       - name: Generate Changelog
-        id: changelog
-        uses: janheinrichmerker/action-github-changelog-generator@v2.3
+        uses: mikepenz/release-changelog-builder-action@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          output: './CHANGELOG.md'
-          onlyLastTag: "true"
-          issues: true
-          pulls: true
-          author: true
+          fromTag: ${{ env.latest_tag }}
+          toTag: HEAD
+          fetchReleaseInformation: true
+          outputFile: ./CHANGELOG.md
+          failOnError: false
 
-      - name: Commit and Push Changelog
+      - name: Read Changelog File
+        id: read_changelog
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "github-actions@users.noreply.github.com"
-          git add CHANGELOG.md
-          git commit -m "Update changelog for ${{ env.NEW_TAG }}"
-          git push origin dev-branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV
+          cat CHANGELOG.md >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+          
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
@@ -66,6 +66,6 @@ jobs:
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "Release ${{ env.NEW_TAG }}"
-          body_path: "./CHANGELOG.md"
+          body: "${{ env.CHANGELOG_CONTENT }}"  # Fix: Read the changelog content properly
           draft: false
           prerelease: false
