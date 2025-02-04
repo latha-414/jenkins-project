@@ -45,10 +45,10 @@ jobs:
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          output: './CHANGELOG.md'
+          pull-requests: "true" 
           onlyLastTag: true
-          sinceTag: ${{ env.NEW_TAG }}
-          dueTag: v0.0.1-dev-branch.48
+          output: './CHANGELOG.md'
+          
           
      
       - name: Create GitHub Release
