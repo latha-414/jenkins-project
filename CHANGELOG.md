@@ -1,16 +1,12 @@
 # Changelog
 
+## [v0.0.1-dev-branch.72](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.72) (2025-02-04)
+
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.71...v0.0.1-dev-branch.72)
+
 ## [v0.0.1-dev-branch.71](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.71) (2025-02-04)
 
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.70...v0.0.1-dev-branch.71)
-
-## [v0.0.1-dev-branch.70](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.70) (2025-02-04)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.69...v0.0.1-dev-branch.70)
-
-## [v0.0.1-dev-branch.69](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.69) (2025-02-04)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.68...v0.0.1-dev-branch.69)
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.69...v0.0.1-dev-branch.71)
 
 
 
