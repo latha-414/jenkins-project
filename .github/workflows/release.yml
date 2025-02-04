@@ -45,7 +45,7 @@ jobs:
       - name: Generate Changelog
         uses: mikepenz/release-changelog-builder-action@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           fromTag: ${{ env.latest_tag }}
           toTag: HEAD
           fetchReleaseInformation: true
