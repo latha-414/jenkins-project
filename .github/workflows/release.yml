@@ -47,7 +47,11 @@ jobs:
 
       - name: Read Changelog File
         id: read_changelog
-        run: echo "CHANGELOG_CONTENT=$(cat CHANGELOG.md)" >> $GITHUB_ENV
+        run: |
+          echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV
+          cat CHANGELOG.md >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
