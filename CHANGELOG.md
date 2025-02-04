@@ -1,157 +1,16 @@
 # Changelog
 
-## [Unreleased](https://github.com/latha-414/jenkins-project/tree/HEAD)
+## [v0.0.1-dev-branch.71](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.71) (2025-02-04)
 
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.36...HEAD)
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.70...v0.0.1-dev-branch.71)
 
-**Fixed bugs:**
+## [v0.0.1-dev-branch.70](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.70) (2025-02-04)
 
-- fix login validation for bug [\#2](https://github.com/latha-414/jenkins-project/pull/2) ([latha-414](https://github.com/latha-414))
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.69...v0.0.1-dev-branch.70)
 
-**Merged pull requests:**
+## [v0.0.1-dev-branch.69](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.69) (2025-02-04)
 
-- create pr for commit test [\#3](https://github.com/latha-414/jenkins-project/pull/3) ([latha-414](https://github.com/latha-414))
-- \[dev-branch\] - first pull request for testing the release file [\#1](https://github.com/latha-414/jenkins-project/pull/1) ([latha-414](https://github.com/latha-414))
-
-## [v0.0.1-dev-branch.36](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.36) (2025-01-29)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.35...v0.0.1-dev-branch.36)
-
-## [v0.0.1-dev-branch.35](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.35) (2025-01-29)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.34...v0.0.1-dev-branch.35)
-
-## [v0.0.1-dev-branch.34](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.34) (2025-01-29)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.33...v0.0.1-dev-branch.34)
-
-## [v0.0.1-dev-branch.33](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.33) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.31...v0.0.1-dev-branch.33)
-
-## [v0.0.1-dev-branch.31](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.31) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.30...v0.0.1-dev-branch.31)
-
-## [v0.0.1-dev-branch.30](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.30) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.29...v0.0.1-dev-branch.30)
-
-## [v0.0.1-dev-branch.29](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.29) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.27...v0.0.1-dev-branch.29)
-
-## [v0.0.1-dev-branch.27](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.27) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.26...v0.0.1-dev-branch.27)
-
-## [v0.0.1-dev-branch.26](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.26) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.25...v0.0.1-dev-branch.26)
-
-## [v0.0.1-dev-branch.25](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.25) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.24...v0.0.1-dev-branch.25)
-
-## [v0.0.1-dev-branch.24](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.24) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.23...v0.0.1-dev-branch.24)
-
-## [v0.0.1-dev-branch.23](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.23) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.22...v0.0.1-dev-branch.23)
-
-## [v0.0.1-dev-branch.22](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.22) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.21...v0.0.1-dev-branch.22)
-
-## [v0.0.1-dev-branch.21](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.21) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.20...v0.0.1-dev-branch.21)
-
-## [v0.0.1-dev-branch.20](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.20) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.19...v0.0.1-dev-branch.20)
-
-## [v0.0.1-dev-branch.19](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.19) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.18...v0.0.1-dev-branch.19)
-
-## [v0.0.1-dev-branch.18](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.18) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.17...v0.0.1-dev-branch.18)
-
-## [v0.0.1-dev-branch.17](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.17) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.16...v0.0.1-dev-branch.17)
-
-## [v0.0.1-dev-branch.16](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.16) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.15...v0.0.1-dev-branch.16)
-
-## [v0.0.1-dev-branch.15](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.15) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.14...v0.0.1-dev-branch.15)
-
-## [v0.0.1-dev-branch.14](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.14) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.13...v0.0.1-dev-branch.14)
-
-## [v0.0.1-dev-branch.13](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.13) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.12...v0.0.1-dev-branch.13)
-
-## [v0.0.1-dev-branch.12](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.12) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.11...v0.0.1-dev-branch.12)
-
-## [v0.0.1-dev-branch.11](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.11) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.10...v0.0.1-dev-branch.11)
-
-## [v0.0.1-dev-branch.10](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.10) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.9...v0.0.1-dev-branch.10)
-
-## [v0.0.1-dev-branch.9](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.9) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.8...v0.0.1-dev-branch.9)
-
-## [v0.0.1-dev-branch.8](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.8) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.7...v0.0.1-dev-branch.8)
-
-## [v0.0.1-dev-branch.7](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.7) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.6...v0.0.1-dev-branch.7)
-
-## [v0.0.1-dev-branch.6](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.6) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.4...v0.0.1-dev-branch.6)
-
-## [v0.0.1-dev-branch.4](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.4) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.5...v0.0.1-dev-branch.4)
-
-## [v0.0.1-dev-branch.5](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.5) (2025-01-28)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.3...v0.0.1-dev-branch.5)
-
-## [v0.0.1-dev-branch.3](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.3) (2025-01-27)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.2...v0.0.1-dev-branch.3)
-
-## [v0.0.1-dev-branch.2](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.2) (2025-01-27)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.1...v0.0.1-dev-branch.2)
-
-## [v0.0.1-dev-branch.1](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.1) (2025-01-27)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.0...v0.0.1-dev-branch.1)
-
-## [v0.0.1-dev-branch.0](https://github.com/latha-414/jenkins-project/tree/v0.0.1-dev-branch.0) (2025-01-27)
-
-[Full Changelog](https://github.com/latha-414/jenkins-project/compare/35340cb0bde90ad72379fc2401574d4eb1c83de6...v0.0.1-dev-branch.0)
+[Full Changelog](https://github.com/latha-414/jenkins-project/compare/v0.0.1-dev-branch.68...v0.0.1-dev-branch.69)
 
 
 
