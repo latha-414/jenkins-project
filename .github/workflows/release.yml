@@ -52,13 +52,7 @@ jobs:
           outputFile: ./CHANGELOG.md
           failOnError: false
 
-      - name: Read Changelog File
-        id: read_changelog
-        run: |
-          echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV
-          cat CHANGELOG.md >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-          
+     
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
@@ -66,6 +60,7 @@ jobs:
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "Release ${{ env.NEW_TAG }}"
-          body: "${{ env.CHANGELOG_CONTENT }}"  # Fix: Read the changelog content properly
+          body: "${{ steps.changelog.outputs.changelog }}"
           draft: false
           prerelease: false
+
