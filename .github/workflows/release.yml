@@ -9,9 +9,9 @@ on:
         default: "patch"
         type: choice
         options:
-        - major
-        - minor
-        - patch
+          - major
+          - minor
+          - patch
 
 permissions:
   contents: write
@@ -24,33 +24,31 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # Ensure full history is checked out
-          git-branch: dev-branch
+          fetch-depth: 0
+          ref: dev-branch  # Fix: Correct way to checkout a branch
 
       - name: Tag and Release
         id: tag_release
         uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          append_to_pre_release_tag: ""
           default_bump: ${{ github.event.inputs.release_type }}
           tag_prefix: v
 
       - name: Get New Tag
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
 
-      - name: "✏️ Generate release changelog"
+      - name: Generate Changelog
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} 
-          onlyLastTag: "true" 
-          pull-requests: "true"  # Include only pull requests
-          unreleased: "false"   # Exclude unreleased changes
-          issues: "false"       
+          token: ${{ secrets.GITHUB_TOKEN }}  # Fix: Ensure the correct token is used
+          onlyLastTag: "true"
           output: './CHANGELOG.md'
-         
-          
-     
+
+      - name: Read Changelog File
+        id: read_changelog
+        run: echo "CHANGELOG_CONTENT=$(cat CHANGELOG.md)" >> $GITHUB_ENV
+
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
@@ -58,6 +56,6 @@ jobs:
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "Release ${{ env.NEW_TAG }}"
-          body: "${{ steps.changelog.outputs.changelog }}"
+          body: "${{ env.CHANGELOG_CONTENT }}"  # Fix: Read the changelog content properly
           draft: false
           prerelease: false
