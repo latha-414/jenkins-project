@@ -44,8 +44,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
-          onlyLastTag: "true" 
-          
+          onlyLastTag: "true"
+          issues: true
+          pulls: true
+          author: true
+
       - name: Commit and Push Changelog
         run: |
           git config --global user.name "GitHub Actions"
@@ -63,6 +66,6 @@ jobs:
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "Release ${{ env.NEW_TAG }}"
-          body: "${{ steps.changelog.outputs.changelog }}"
+          body_path: "./CHANGELOG.md"
           draft: false
           prerelease: false
