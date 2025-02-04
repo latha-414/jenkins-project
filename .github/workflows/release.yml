@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Ensure full history is checked out
-          git-branch: dev-branch
+         
 
       - name: Tag and Release
         id: tag_release
@@ -44,15 +44,10 @@ jobs:
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          since-tag: "v0.0.1-dev-branch.42"  # Change to the specific tag
-          due-tag: "v0.0.1-dev-branch.43"  # Change to the specific tag
-          pull-requests: "true"  # Include only pull requests
-          unreleased: "false"   # Exclude unreleased changes
-          issues: "false"       
+          onlyLastTag: "true" 
           output: './CHANGELOG.md'
          
-          
-     
+        
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
