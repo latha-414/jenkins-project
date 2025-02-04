@@ -1,4 +1,4 @@
-name: Tag and release
+name: Tag and Release
 
 on:
   workflow_dispatch:
@@ -9,9 +9,9 @@ on:
         default: "patch"
         type: choice
         options:
-        - major
-        - minor
-        - patch
+          - major
+          - minor
+          - patch
 
 permissions:
   contents: write
@@ -47,20 +47,12 @@ jobs:
           output: './CHANGELOG.md'
           onlyLastTag: true
           sinceTag: ${{ env.NEW_TAG }}
-          dueTag: v0.0.1-dev-branch.42
-          
-     
-      - name: Read Changelog File
-        id: read_changelog
-        run: echo "CHANGELOG_BODY=$(cat ./CHANGELOG.md)" >> $GITHUB_ENV
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "Release ${{ env.NEW_TAG }}"
-          body: "${{ env.CHANGELOG_BODY }}"
+          body: "${{ steps.changelog.outputs.changelog }}"
           draft: false
           prerelease: false
