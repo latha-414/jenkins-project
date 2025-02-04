@@ -43,11 +43,12 @@ jobs:
         uses: mikepenz/release-changelog-builder-action@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          onlyLastTag: "true"
-          includePulls: "true"
-          pr-labels: "bug,enhancement,feature,*"
-          output: "./CHANGELOG.md"
-
+          fromTag: latest
+          toTag: HEAD
+          includePulls: true
+          fetchReleaseInformation: true
+          outputFile: ./CHANGELOG.md
+          
       - name: Read Changelog File
         id: read_changelog
         run: |
