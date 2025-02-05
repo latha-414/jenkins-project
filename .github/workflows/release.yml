@@ -43,7 +43,7 @@ jobs:
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          since-tag: v0.0.1
+          since-tag: ${{ env.NEW_TAG }}
           output: './CHANGELOG.md'
 
       - name: Create GitHub Release
@@ -53,6 +53,6 @@ jobs:
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "${{ env.NEW_TAG }}"  # Removed "Release " prefix
-          body: "${{ steps.changelog.outputs.changelog }}"
+          body: ${{ steps.changelog.outputs.changelog }}  # Corrected this to use the changelog output
           draft: false
           prerelease: false
