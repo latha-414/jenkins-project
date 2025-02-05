@@ -15,7 +15,7 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write  # Ensure PR details are accessible
+  pull-requests: read  # Ensure PR details are accessible
 
 jobs:
   create_release:
@@ -26,7 +26,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          ref: dev-branch  # Ensure correct branch is checked out
+          ref: main  # Ensure correct branch is checked out
 
       - name: Tag and Release
         id: tag_release
@@ -40,15 +40,25 @@ jobs:
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
 
       - name: Debug Tag
-        run: echo "New Tag:${{ env.NEW_TAG }}"
+        run: echo "New Tag: ${{ env.NEW_TAG }}"
 
       - name: Generate Changelog
         id: changelog
-        uses: janheinrichmerker/action-github-changelog-generator@v2.3
+        uses: janheinrichmerker/action-github-changelog-generator@v2.4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           output: './CHANGELOG.md'
-          sinceTag: ${{ env.NEW_TAG }}
+          sinceTag: v0.0.1  # Adjust based on your last release
+          futureRelease: ${{ env.NEW_TAG }}
+          issues: true
+          pullRequests: true
+          author: true
+          verbose: true
+          prLabels: true
+          prWoLabels: true
+
+      - name: Debug Changelog
+        run: cat CHANGELOG.md
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
@@ -57,6 +67,6 @@ jobs:
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "Release ${{ env.NEW_TAG }}"
-          body: "${{ steps.changelog.outputs.changelog }}"
+          body_path: './CHANGELOG.md'
           draft: false
           prerelease: false
