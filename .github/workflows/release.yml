@@ -44,7 +44,6 @@ jobs:
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           since-tag: v0.0.1
-          due-tag: v0.0.1
           output: './CHANGELOG.md'
 
       - name: Create GitHub Release
