@@ -40,7 +40,7 @@ jobs:
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
 
       - name: Debug Tag
-        run: echo "New Tag: ${{ env.NEW_TAG }}"
+        run: echo "New Tag:${{ env.NEW_TAG }}"
 
       - name: Generate Changelog
         id: changelog
