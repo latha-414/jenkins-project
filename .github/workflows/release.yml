@@ -1,4 +1,4 @@
-name: Tag and Release
+name: Tag and release
 
 on:
   workflow_dispatch:
@@ -9,9 +9,9 @@ on:
         default: "patch"
         type: choice
         options:
-          - major
-          - minor
-          - patch
+        - major
+        - minor
+        - patch
 
 permissions:
   contents: write
@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          
 
       - name: Tag and Release
         id: tag_release
@@ -36,24 +37,16 @@ jobs:
 
       - name: Get New Tag
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
-    
-      - name: Get Latest Tag
-        id: get_tag
-        run: |
-          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "latest_tag=$latest_tag" >> $GITHUB_ENV
 
       - name: Generate Changelog
         id: changelog
-        uses: mikepenz/release-changelog-builder-action@v3
+        uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fromTag: ${{ env.latest_tag }}
-          toTag: HEAD
-          fetchReleaseInformation: true
-          outputFile: ./CHANGELOG.md
-          failOnError: false
+          token: ${{ secrets.TAG_AND_RELEASE }}
+          onlyLastTag: "true" 
+          output: './CHANGELOG.md'
 
+         
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
