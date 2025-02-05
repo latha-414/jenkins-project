@@ -32,8 +32,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: ${{ github.event.inputs.release_type }}
-          tag_prefix: "v"
-          tag_suffix: ""  # Ensure no unwanted suffix is added
+          tag_prefix: v
 
       - name: Get New Tag
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
@@ -43,8 +42,15 @@ jobs:
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          since-tag: ${{ env.NEW_TAG }}
           output: './CHANGELOG.md'
+          simpleList: true
+          stripHeaders: true
+          stripGeneratorNotice: true
+          compareLink: false
+
+
+      - name: Debug Changelog Output
+        run: cat ./CHANGELOG.md  # Check the generated changelog file in logs
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
@@ -52,7 +58,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: "${{ env.NEW_TAG }}"
-          release_name: "${{ env.NEW_TAG }}"  # Removed "Release " prefix
-          body: ${{ steps.changelog.outputs.changelog }}  # Corrected this to use the changelog output
+          release_name: "${{ env.NEW_TAG }}"
+          body: "${{ steps.changelog.outputs.changelog }}"  # Ensure changelog is passed correctly
           draft: false
           prerelease: false
