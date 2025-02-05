@@ -43,8 +43,8 @@ jobs:
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          since-tag: v0.0.1-dev-branch.75
-          due-tag: v0.0.1-dev-branch.75
+          since-tag: v0.0.1
+          due-tag: v0.0.1
           output: './CHANGELOG.md'
 
       - name: Create GitHub Release
