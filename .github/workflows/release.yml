@@ -42,13 +42,12 @@ jobs:
         uses: janheinrichmerker/action-github-changelog-generator@v2.3
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          pullRequests: true   # Include pull requests in the changelog
-          prLabel: "Merged PR Details"  # Custom section heading for merged PRs
-          stripHeaders: true   # Removes default changelog header
-          stripGeneratorNotice: true  # Removes the generator notice
-          output: 'CHANGELOG.md'  # Output file name
-          simpleList: true  
-
+          pullRequests: true   # Ensure pull requests are included
+          stripHeaders: true   # Remove default changelog headers
+          stripGeneratorNotice: true  # Remove generator notice
+          simpleList: true  # Use a simplified list format
+          output: 'CHANGELOG.md'  # Specify output file
+          prLabel: "Merged PR Details" 
 
       - name: Debug Changelog Output
         run: cat ./CHANGELOG.md  # Check the generated changelog file in logs
