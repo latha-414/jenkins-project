@@ -33,6 +33,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: ${{ github.event.inputs.release_type }}
           tag_prefix: v
+          append_to_pre_release_tag: ""
 
       - name: Get New Tag
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
@@ -49,8 +50,7 @@ jobs:
           output: 'CHANGELOG.md'  # Specify output file
           prLabel: "Merged PR Details" 
 
-      - name: Debug Changelog Output
-        run: cat ./CHANGELOG.md  # Check the generated changelog file in logs
+     
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
