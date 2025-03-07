@@ -53,10 +53,9 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .github/workflows/release.yml
           git commit -m "Update Jira versions in release.yml"
+          # Use GITHUB_TOKEN directly in the URL
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/latha-414/repo.git main
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
+  # Remove the redundant env block
 
 
           
