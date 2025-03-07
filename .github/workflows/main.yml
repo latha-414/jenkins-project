@@ -46,11 +46,20 @@ jobs:
         with:
           cmd: yq eval ".on.workflow_dispatch.inputs.release_type.options = $(cat versions.json)" -i .github/workflows/release.yml
 
+
       - name: Commit and Push Changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Update Jira versions in main.yml"
-          branch: main
-          file_pattern: ".github/workflows/release.yml"
-        env:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/workflows/release.yml
+          git commit -m "Update Jira versions in release.yml"
+          git push --force https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/latha-414/repo.git main
+          
+      # - name: Commit and Push Changes
+      #   uses: stefanzweifel/git-auto-commit-action@v5
+      #   with:
+      #     commit_message: "Update Jira versions in main.yml"
+      #     branch: main
+      #     file_pattern: ".github/workflows/release.yml"
+      #   env:
+      #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
