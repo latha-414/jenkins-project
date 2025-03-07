@@ -16,6 +16,7 @@ on:
 permissions:
   contents: write
   id-token: write
+  
 
 jobs:
   update-versions:
@@ -43,13 +44,13 @@ jobs:
       - name: Update Release Workflow File
         uses: mikefarah/yq@v4
         with:
-          cmd: yq eval ".on.workflow_dispatch.inputs.release_type.options = $(cat versions.json)" -i .github/workflows/main.yml
+          cmd: yq eval ".on.workflow_dispatch.inputs.release_type.options = $(cat versions.json)" -i .github/workflows/release.yml
 
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update Jira versions in main.yml"
           branch: main
-          file_pattern: ".github/workflows/main.yml"
+          file_pattern: ".github/workflows/release.yml"
         env:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
