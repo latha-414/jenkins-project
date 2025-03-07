@@ -47,7 +47,7 @@ jobs:
           cmd: yq eval ".on.workflow_dispatch.inputs.release_type.options = $(cat versions.json)" -i .github/workflows/release.yml
 
 
-      - name: Commit and Push Changes
+      - name: Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -55,7 +55,7 @@ jobs:
           git commit -m "Update Jira versions in release.yml"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/latha-414/repo.git main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
 
 
