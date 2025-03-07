@@ -1,0 +1,55 @@
+name: Update Jira Versions in Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: "Select the type of release"
+        required: true
+        default: "patch"
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  update-versions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # - name: Get Jira Versions
+      #   id: get_versions
+      #   uses: fjogeleit/http-request-action@v1
+      #   with:
+      #     url: "https://trigentnav.atlassian.net/rest/api/3/project/JEN/versions"
+      #     method: "GET"
+      #     username: latha_pal@gmail.com
+      #     password: Latha@411
+      #     contentType: "application/json"
+
+      - name: Hardcode Jira Versions
+        run: |
+          echo '["1.0.0", "1.1.0", "1.2.0", "2.0.0", "major", "minor", "patch"]' > versions.json
+      - name: Update Release Workflow File
+        uses: mikefarah/yq@v4
+        with:
+          cmd: yq eval ".on.workflow_dispatch.inputs.release_type.options = $(cat versions.json)" -i .github/workflows/main.yml
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update Jira versions in main.yml"
+          branch: main
+          file_pattern: ".github/workflows/main.yml"
+        env:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
