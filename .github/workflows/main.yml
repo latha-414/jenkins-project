@@ -2,22 +2,11 @@ name: Update Jira Versions in Workflow
 
 on:
   workflow_dispatch:
-    inputs:
-      release_type:
-        description: "Select the type of release"
-        required: true
-        default: "patch"
-        type: choice
-        options:
-          - major
-          - minor
-          - patch
 
 permissions:
   contents: write
   id-token: write
   actions: write
-  
 
 jobs:
   update-versions:
@@ -29,39 +18,35 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Fetch Jira Versions from API (if needed)
       # - name: Get Jira Versions
       #   id: get_versions
       #   uses: fjogeleit/http-request-action@v1
       #   with:
       #     url: "https://trigentnav.atlassian.net/rest/api/3/project/JEN/versions"
       #     method: "GET"
-      #     username: latha_pal@gmail.com
-      #     password: Latha@411
+      #     username: ${{ secrets.JIRA_USERNAME }}
+      #     password: ${{ secrets.JIRA_API_TOKEN }}
       #     contentType: "application/json"
 
       - name: Hardcode Jira Versions
         run: |
           echo '["1.0.0", "1.1.0", "1.2.0", "2.0.0", "major", "minor", "patch"]' > versions.json
+
+      - name: Debug Versions File
+        run: cat versions.json
+
       - name: Update Release Workflow File
         uses: mikefarah/yq@v4
         with:
-          cmd: yq eval ".on.workflow_dispatch.inputs.release_type.options = $(cat versions.json)" -i .github/workflows/release.yml
+          cmd: yq eval ".on.workflow_dispatch.inputs.jira_version.options = $(cat versions.json)" -i .github/workflows/release.yml
 
-
-      - name: Push Changes with PAT
+      - name: Commit and Push Changes
         run: |
           git config --global user.email "lathapaladugu414@gmail.com"
           git config --global user.name "latha-414"
-          git remote set-url origin https://your-github-username:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/latha-414/jenkins-project.git
+          git add .github/workflows/release.yml
+          git commit -m "Updated Jira versions in release.yml"
           git push origin main
-
-
-          
-      # - name: Commit and Push Changes
-      #   uses: stefanzweifel/git-auto-commit-action@v5
-      #   with:
-      #     commit_message: "Update Jira versions in main.yml"
-      #     branch: main
-      #     file_pattern: ".github/workflows/release.yml"
-      #   env:
-      #     token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
