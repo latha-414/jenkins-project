@@ -41,7 +41,7 @@ jobs:
         run: |
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git remote set-url origin https://${{ secrets.PAT_TOKEN }}@github.com/latha-414/jenkins-project.git
+          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/latha-414/jenkins-project.git
 
       - name: Push Changes
         run: |
