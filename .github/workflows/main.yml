@@ -54,15 +54,20 @@ jobs:
           echo "Checking GitHub Token Scopes..."
           curl -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" https://api.github.com/user
 
-      - name: Set Up Git Credentials
-        run: |
-          git config --global user.email "lathapaladugu414@gmail.com"
-          git config --global user.name "latha-414"
-          git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/latha-414/jenkins-project.git
+     
 
-      - name: Push Changes
+      - name: Switch to release branch
+        run: |
+          git fetch origin
+          git checkout release-branch  # Replace with your actual branch name
+          git pull origin release-branch --rebase  # Ensure it's up to date
+
+      - name: Update Release YAML
         run: |
           git add .github/workflows/release.yml
           git commit -m "Updated Jira versions in release.yml" || echo "No changes to commit"
-          git pull --rebase origin main  # Avoid conflicts
-          git push origin main
+
+      - name: Push changes
+        run: |
+          git push origin release-branch  # Push changes to the correct branch
+
