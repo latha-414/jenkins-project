@@ -44,8 +44,7 @@ jobs:
           git checkout dev-branch  # Replace with your actual branch name
           git pull origin dev-branch --rebase  # Ensure it's up to date
 
-      # ✅ Commit only if there are changes
-      - name: Commit Changes
+      - name: Commit Changes (If Any)
         run: |
           git add .github/workflows/release.yml
           if git diff --staged --quiet; then
@@ -53,6 +52,8 @@ jobs:
           else
             git commit -m "Updated release.yml"
           fi
+          git pull origin dev-branch --rebase
+
 
       # ✅ Push changes safely
       - name: Push changes
