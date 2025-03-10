@@ -18,58 +18,43 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Fetch Jira Versions from API (if needed)
-      # - name: Get Jira Versions
-      #   id: get_versions
-      #   uses: fjogeleit/http-request-action@v1
-      #   with:
-      #     url: "https://trigentnav.atlassian.net/rest/api/3/project/JEN/versions"
-      #     method: "GET"
-      #     username: ${{ secrets.JIRA_USERNAME }}
-      #     password: ${{ secrets.JIRA_API_TOKEN }}
-      #     contentType: "application/json"
+      # ✅ Install `yq` before using it
+      - name: Install yq
+        run: |
+          sudo apt update && sudo apt install -y jq
+          wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+          chmod +x /usr/local/bin/yq
 
-      # - name: Hardcode Jira Versions
-      #   run: |
-      #     echo '["1.0.0", "1.1.0", "1.2.0", "2.0.0", "major", "minor", "patch"]' > versions.json
-
-      # - name: Debug Versions File
-      #   run: cat versions.json
-
-      # - name: Update Release Workflow File
-      #   uses: mikefarah/yq@v4
-      #   with:
-      #     cmd: yq eval ".on.workflow_dispatch.inputs.jira_version.options = $(cat versions.json)" -i .github/workflows/release.yml
-
-
-      # 1️⃣ Update `release.yml` directly
+      # ✅ Update `release.yml` directly using yq
       - name: Update Release Workflow File
         run: |
           yq eval '.on.workflow_dispatch.inputs.jira_version.options = ["1.0.0", "1.1.0", "1.2.0", "2.0.0", "major", "minor", "patch"]' -i .github/workflows/release.yml
           cat .github/workflows/release.yml  # Debug: Show updated file
 
-
+      # ✅ Debug GitHub Token Scopes (Optional)
       - name: Debug GitHub Actions Token
         run: |
           echo "Checking GitHub Token Scopes..."
-          curl -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" https://api.github.com/user
+          curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/user
 
-     
-
+      # ✅ Switch to release branch and pull latest changes
       - name: Switch to release branch
         run: |
-          git fetch origin
+          git fetch origin --prune
           git checkout dev-branch  # Replace with your actual branch name
           git pull origin dev-branch --rebase  # Ensure it's up to date
 
+      # ✅ Commit only if there are changes
       - name: Commit Changes
         run: |
           git add .github/workflows/release.yml
-          git commit -m "Updated release.yml"
-          git pull origin dev-branch --rebase
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Updated release.yml"
+          fi
 
-
+      # ✅ Push changes safely
       - name: Push changes
         run: |
-          git push origin dev-branch  # Push changes to the correct branch
-
+          git push origin dev-branch
