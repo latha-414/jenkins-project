@@ -29,17 +29,26 @@ jobs:
       #     password: ${{ secrets.JIRA_API_TOKEN }}
       #     contentType: "application/json"
 
-      - name: Hardcode Jira Versions
-        run: |
-          echo '["1.0.0", "1.1.0", "1.2.0", "2.0.0", "major", "minor", "patch"]' > versions.json
+      # - name: Hardcode Jira Versions
+      #   run: |
+      #     echo '["1.0.0", "1.1.0", "1.2.0", "2.0.0", "major", "minor", "patch"]' > versions.json
 
-      - name: Debug Versions File
-        run: cat versions.json
+      # - name: Debug Versions File
+      #   run: cat versions.json
 
+      # - name: Update Release Workflow File
+      #   uses: mikefarah/yq@v4
+      #   with:
+      #     cmd: yq eval ".on.workflow_dispatch.inputs.jira_version.options = $(cat versions.json)" -i .github/workflows/release.yml
+
+
+      # 1️⃣ Update `release.yml` directly
       - name: Update Release Workflow File
-        uses: mikefarah/yq@v4
-        with:
-          cmd: yq eval ".on.workflow_dispatch.inputs.jira_version.options = $(cat versions.json)" -i .github/workflows/release.yml
+        run: |
+          yq eval '.on.workflow_dispatch.inputs.jira_version.options = ["1.0.0", "1.1.0", "1.2.0", "2.0.0", "major", "minor", "patch"]' -i .github/workflows/release.yml
+          cat .github/workflows/release.yml  # Debug: Show updated file
+
+
 
       - name: Push Changes with PAT
         run: |
