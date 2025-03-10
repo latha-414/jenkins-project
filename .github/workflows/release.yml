@@ -1,25 +1,21 @@
-name: Tag and release
+name: Tag and Release
 
 on:
   workflow_dispatch:
     inputs:
-      release_type:
-        description: "Select the type of release"
+      jira_version:
+        description: "Select Jira Version"
         required: true
-        default: "patch"
         type: choice
-        options:
-        - major
-        - minor
-        - patch
+        options: [] # Will be automatically updated by `update_versions.yml`
 
 permissions:
   contents: write
+  actions: write
 
 jobs:
   create_release:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -31,25 +27,24 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: ${{ github.event.inputs.release_type }}
+          default_bump: patch
           tag_prefix: v
-          append_to_pre_release_tag: ''
-          
+
       - name: Get New Tag
         run: echo "NEW_TAG=${{ steps.tag_release.outputs.new_tag }}" >> $GITHUB_ENV
 
-      - name: Generate Changelog
-        id: changelog
-        uses: janheinrichmerker/action-github-changelog-generator@v2.3
-        with:
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          stripHeaders: true   # Remove default changelog headers
-          stripGeneratorNotice: true  # Remove generator notice
-          simpleList: true  # Use a simplified list format
-          output: 'CHANGELOG.md'  # Specify output file
-          #prLabel: "Merged PR Details" 
-
-     
+      # - name: Generate Changelog
+      #   id: changelog
+      #   uses: janheinrichmerker/action-github-changelog-generator@v2.3
+      #   with:
+      #     token: ${{ secrets.TAG_AND_RELEASE }}
+      #     output: './CHANGELOG.md'
+      #     pullRequests: true
+      #     prLabel: "Merged PR Details"
+      #     simpleList: true
+      #     stripHeaders: true
+      #     stripGeneratorNotice: true
+      #     compareLink: false
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
@@ -58,6 +53,6 @@ jobs:
         with:
           tag_name: "${{ env.NEW_TAG }}"
           release_name: "${{ env.NEW_TAG }}"
-          body: "${{ steps.changelog.outputs.changelog }}"  # Ensure changelog is passed correctly
+          body: "${{ steps.changelog.outputs.changelog }}"
           draft: false
           prerelease: false
