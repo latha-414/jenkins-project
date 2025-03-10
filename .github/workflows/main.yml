@@ -49,6 +49,13 @@ jobs:
           cat .github/workflows/release.yml  # Debug: Show updated file
 
 
+      - name: Debug GitHub Actions Token
+        run: |
+          echo "Checking GitHub Token Scopes..."
+          curl -H "Authorization: token ${{ secrets.PERSONAL_ACCESS_TOKEN }}" https://api.github.com/user
+
+
+
 
       - name: Push Changes with PAT
         run: |
