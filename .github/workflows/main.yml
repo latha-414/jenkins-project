@@ -50,21 +50,12 @@ jobs:
 
 
 
-      - name: Commit and Push Changes
+      - name: Push Changes with PAT
         run: |
           git config --global user.email "lathapaladugu414@gmail.com"
           git config --global user.name "latha-414"
-          
-          # Check if there are changes
-          git add .github/workflows/release.yml
-          git status  # Debug: Show what changed
-          git diff    # Debug: Show actual modifications
-          
-          # Commit only if there are changes
-          git commit -m "Updated Jira versions in release.yml" || echo "No changes to commit"
-          
-          # Set remote URL with personal access token
           git remote set-url origin https://latha-414:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/latha-414/jenkins-project.git
-          
-          # Push changes
+          git add .github/workflows/release.yml
+          git commit -m "Updated Jira versions in release.yml" || echo "No changes to commit"
           git push origin main
+
