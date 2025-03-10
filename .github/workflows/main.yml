@@ -59,8 +59,8 @@ jobs:
       - name: Switch to release branch
         run: |
           git fetch origin
-          git checkout release-branch  # Replace with your actual branch name
-          git pull origin release-branch --rebase  # Ensure it's up to date
+          git checkout dev-branch  # Replace with your actual branch name
+          git pull origin dev-branch --rebase  # Ensure it's up to date
 
       - name: Update Release YAML
         run: |
@@ -69,5 +69,5 @@ jobs:
 
       - name: Push changes
         run: |
-          git push origin release-branch  # Push changes to the correct branch
+          git push origin dev-branch  # Push changes to the correct branch
 
